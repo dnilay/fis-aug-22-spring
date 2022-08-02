@@ -1,5 +1,8 @@
 package org.example.spring_demo2.model;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Order {
 
 	private String orderId;

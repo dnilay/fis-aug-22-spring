@@ -3,7 +3,7 @@ package org.example.spring_demo2.model;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component(value = "theCustomer")
+@Component
 public class Customer {
 
 	private int customerId;
