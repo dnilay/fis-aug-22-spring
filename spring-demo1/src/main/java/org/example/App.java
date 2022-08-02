@@ -1,11 +1,12 @@
 package org.example;
 
 import org.example.model.Coach;
+import org.example.model.Employee;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class App {
-	private static ApplicationContext context=null;
+	private static ApplicationContext context = null;
 
 	public static void main(String[] args) {
 		try {
@@ -13,7 +14,9 @@ public class App {
 			context = new ClassPathXmlApplicationContext("applicationContext.xml");
 			Coach myCoach = context.getBean("theCoach", Coach.class);
 			System.out.println(myCoach.getDailyWorlout());
-			
+			System.out.println(myCoach.getDailyFortune());
+			Employee employee=context.getBean("emp",Employee.class);
+			System.out.println(employee.toString());
 
 		} catch (Exception e) {
 			// TODO: handle exception

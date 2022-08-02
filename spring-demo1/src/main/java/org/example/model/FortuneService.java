@@ -1,8 +1,7 @@
 package org.example.model;
 
-public interface Coach {
+public interface FortuneService {
 	
-	String getDailyWorlout();
 	String getDailyFortune();
 
 }
