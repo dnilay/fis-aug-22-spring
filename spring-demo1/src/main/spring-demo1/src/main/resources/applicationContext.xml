@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd">
+	<bean id="theCoach" class="org.example.impl.SwimmingCoach"></bean>
+	<bean id="employee" class="org.example.model.Employee">
+		<constructor-arg index="0" value="101" />
+		<constructor-arg index="1" value="John" />
+		<constructor-arg index="2" value="Doe" />
+		<constructor-arg index="3" value="john@email.com" />
+		<property name="employeeId" value="102" />
+		<property name="firstName" value="Marry" />
+		<property name="lastName" value="Public" />
+		<property name="email" value="marry@email.com" />
+	</bean>
+
+</beans>
