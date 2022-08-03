@@ -28,4 +28,10 @@ public class EmployeeServiceImpl implements EmployeeService{
 		return employeeRepository.getAllEmployees();
 	}
 
+	@Override
+	public void updateEmployeeById(int employeeId) {
+		employeeRepository.updateEmployeeById(employeeId);
+		
+	}
+
 }

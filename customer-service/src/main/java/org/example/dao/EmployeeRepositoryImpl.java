@@ -1,13 +1,12 @@
 package org.example.dao;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Scanner;
 
 import org.example.mapper.EmployeeMapper;
 import org.example.model.Employee;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import lombok.AllArgsConstructor;
@@ -17,7 +16,8 @@ import lombok.AllArgsConstructor;
 public class EmployeeRepositoryImpl implements EmployeeRepository {
 
 	private final JdbcTemplate jdbcTemplate;
-
+	private Scanner scanner;
+	
 	@Override
 	public void createEmployee(Employee employee) throws SQLException {
 		jdbcTemplate.update("insert into employees(first_name,last_name,email) values(?,?,?)", employee.getFirstName(),
@@ -40,8 +40,30 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
 		 * 
 		 * });
 		 */
-		List<Employee> list=jdbcTemplate.query("select * from employees", new EmployeeMapper());
+		List<Employee> list = jdbcTemplate.query("select * from employees", new EmployeeMapper());
 		return list;
+	}
+
+	@Override
+	public void updateEmployeeById(int employeeId) {
+		System.out.print("Enter New First Name: ");
+		String fName=scanner.next();
+		System.out.print("Enter New Last Name: ");
+		String lName=scanner.next();
+		System.out.print("Enter New Email: ");
+		String email=scanner.next();
+		int count=jdbcTemplate.update("update employees set first_name=?,last_name=?,email=? where id=?",fName,lName,email,employeeId);
+		if(count<=0)
+		{
+			System.out.println("no such id found...");
+		}
+		else
+		{
+			System.out.println("updation successfull..");
+		}
+		// TODO Auto-generated method stub
+		
+		
 	}
 
 }

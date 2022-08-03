@@ -25,6 +25,7 @@ public class App {
 			do {
 				System.out.println("1. Create Employee. ");
 				System.out.println("2. Fetch All Employees. ");
+				System.out.println("3. Update. ");
 				System.out.println("0. Exit. ");
 				System.out.print("Enter your choice: ");
 				choice = scanner.nextInt();
@@ -45,6 +46,10 @@ public class App {
 						System.out.println(e);
 					}
 					
+					break;
+				case 3:
+					System.out.print("Enter ID: ");
+					employeeService.updateEmployeeById(scanner.nextInt());
 					break;
 				case 0:
 					System.out.println("Bye...!");
