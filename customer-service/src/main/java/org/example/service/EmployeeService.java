@@ -1,14 +1,13 @@
-package org.example.dao;
+package org.example.service;
 
 import java.sql.SQLException;
 import java.util.List;
 
 import org.example.model.Employee;
 
-public interface EmployeeRepository {
-	
-	void createEmployee(Employee employee) throws SQLException;
-	
-	List<Employee> getAllEmployees() throws SQLException;
+public interface EmployeeService {
 
+	void createEmployee(Employee employee) throws SQLException;
+
+	List<Employee> getAllEmployees() throws SQLException;
 }
