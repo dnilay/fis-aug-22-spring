@@ -10,5 +10,5 @@ public interface EmployeeService {
 	void createEmployee(Employee employee) throws SQLException;
 
 	List<Employee> getAllEmployees() throws SQLException;
-	void updateEmployeeById(int employeeId);
+	void updateEmployeeById(int employeeId) throws SQLException;
 }

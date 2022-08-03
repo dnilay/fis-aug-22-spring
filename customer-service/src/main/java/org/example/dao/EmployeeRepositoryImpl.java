@@ -17,7 +17,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
 
 	private final JdbcTemplate jdbcTemplate;
 	private Scanner scanner;
-	
+
 	@Override
 	public void createEmployee(Employee employee) throws SQLException {
 		jdbcTemplate.update("insert into employees(first_name,last_name,email) values(?,?,?)", employee.getFirstName(),
@@ -45,25 +45,37 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
 	}
 
 	@Override
-	public void updateEmployeeById(int employeeId) {
-		System.out.print("Enter New First Name: ");
-		String fName=scanner.next();
-		System.out.print("Enter New Last Name: ");
-		String lName=scanner.next();
-		System.out.print("Enter New Email: ");
-		String email=scanner.next();
-		int count=jdbcTemplate.update("update employees set first_name=?,last_name=?,email=? where id=?",fName,lName,email,employeeId);
-		if(count<=0)
-		{
+	public void updateEmployeeById(int employeeId) throws SQLException {
+
+		List<Employee> list = getAllEmployees();
+		boolean flag = false;
+		for (Employee e : list) {
+			if (e.getEmployeeId() == employeeId) {
+				flag = true;
+				break;
+			}
+		}
+
+		// Employee employee= jdbcTemplate.queryForObject("select * from employees where
+		// id="+employeeId,new EmployeeMapper());
+
+		// if(employee==null)
+
+		if (flag == false) {
 			System.out.println("no such id found...");
+		} else {
+			System.out.print("Enter New First Name: ");
+			String fName = scanner.next();
+			System.out.print("Enter New Last Name: ");
+			String lName = scanner.next();
+			System.out.print("Enter New Email: ");
+			String email = scanner.next();
+
+			int count = jdbcTemplate.update("update employees set first_name=?,last_name=?,email=? where id=?", fName,
+					lName, email, employeeId);
+			System.out.println("updation successfull.." + count + " record updated...!");
 		}
-		else
-		{
-			System.out.println("updation successfull..");
-		}
-		// TODO Auto-generated method stub
-		
-		
+
 	}
 
 }

@@ -29,7 +29,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 	}
 
 	@Override
-	public void updateEmployeeById(int employeeId) {
+	public void updateEmployeeById(int employeeId) throws SQLException {
 		employeeRepository.updateEmployeeById(employeeId);
 		
 	}
