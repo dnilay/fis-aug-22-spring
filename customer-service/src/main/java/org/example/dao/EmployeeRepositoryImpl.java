@@ -1,6 +1,7 @@
 package org.example.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -15,17 +16,21 @@ import org.springframework.stereotype.Component;
 @Component(value = "employeeRepository")
 public class EmployeeRepositoryImpl implements EmployeeRepository {
 
-	private  DataSource dataSource;
+	private DataSource dataSource;
 
 	private Connection connection = null;
 	private Statement statement = null;
 	private ResultSet resultSet = null;
-	// private PreparedStatement preparedStatement=null;
+	private PreparedStatement preparedStatement = null;
 
 	@Override
-	public Employee createEmployee(Employee employee) {
-		// TODO Auto-generated method stub
-		return null;
+	public Employee createEmployee(Employee employee) throws SQLException {
+		preparedStatement=connection.prepareStatement("insert into employees(first_name,last_name,email) values(?,?,?)");
+		preparedStatement.setString(1, employee.getFirstName());
+		preparedStatement.setString(2, employee.getLastName());
+		preparedStatement.setString(3, employee.getEmail());
+		preparedStatement.executeUpdate();
+		return employee;
 	}
 
 	@Override

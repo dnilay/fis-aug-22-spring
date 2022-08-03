@@ -1,5 +1,7 @@
 package org.example.config;
 
+import java.util.Scanner;
+
 import javax.sql.DataSource;
 
 import org.springframework.context.annotation.Bean;
@@ -20,6 +22,11 @@ public class SpringConfig {
 		dataSource.setUsername("root");
 		dataSource.setPassword("root");
 		return dataSource;
+	}
+	@Bean
+	public Scanner scanner()
+	{
+		return new Scanner(System.in);
 	}
 
 }

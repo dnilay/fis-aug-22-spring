@@ -7,7 +7,7 @@ import org.example.model.Employee;
 
 public interface EmployeeRepository {
 	
-	Employee createEmployee(Employee employee);
+	Employee createEmployee(Employee employee) throws SQLException;
 	
 	List<Employee> getAllEmployees() throws SQLException;
 
