@@ -22,11 +22,12 @@ public class SpringbootHibernateIntegrationApplication {
 	 * Employee employee=new Employee("Atul", "Kumar", "atul@email.com");
 	 * employeeRepository.createEmployee(employee);
 	 */
-	List<Employee> list=employeeRepository.fetchAllEmployees();
-	for(Employee e:list)
-	{
-		System.out.println(e);
-	}
+	/*
+	 * List<Employee> list=employeeRepository.fetchAllEmployees(); for(Employee
+	 * e:list) { System.out.println(e); }
+	 */
+	employeeRepository.findByEmail("d@email.com");
+	
 	
 	log.info("done.!");
 	}
