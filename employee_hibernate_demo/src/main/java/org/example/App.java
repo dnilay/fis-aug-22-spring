@@ -65,7 +65,19 @@ public class App {
 			}
 			else
 			{
-				System.out.println("Found: \n"+employee);
+				System.out.print("Enter New First Name: ");
+				String fName=scanner.next();
+				System.out.print("Enter New Last Name: ");
+				String lName=scanner.next();
+				System.out.print("Enter Email: ");
+				String em=scanner.next();
+				employee.setEmail(em);
+				employee.setFirstName(fName);
+				employee.setLastName(lName);
+			
+				session.merge(employee);
+				session.getTransaction().commit();
+				System.out.println("Foundand updated. \n"+employee);
 			}
 
 			session.close();
